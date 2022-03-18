@@ -1,0 +1,33 @@
+using System;
+
+class Solution
+{
+    static void Main(string[] args)
+    {
+        string Number = Console.ReadLine();
+
+        Number = Convert.ToString(Int64.Parse(Number) + 1);
+
+        char[] growingNumber = Number.ToCharArray();
+
+        int i = 0;
+        char firstBiggestNumber = default;
+
+        for (; i < growingNumber.Length; ++i)
+        {
+            if (Convert.ToInt32(growingNumber[i]) > Convert.ToInt32(growingNumber[i + 1]))
+            {
+                firstBiggestNumber = growingNumber[i];
+                i++;
+                break;
+            }
+        }
+
+        for (; i < growingNumber.Length; ++i)
+        {
+            growingNumber[i] = firstBiggestNumber;
+        }
+
+        Console.WriteLine(growingNumber);
+    }
+}

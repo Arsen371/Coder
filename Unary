@@ -1,0 +1,64 @@
+using System;
+
+/**
+ * Auto-generated code below aims at helping you parse
+ * the standard input according to the problem statement.
+ **/
+class Solution
+{
+    static void Main(string[] args)
+    {
+        string MESSAGE = Console.ReadLine();
+        string binary = "";
+        for (int i = 0; i < MESSAGE.Length; i++)//this part of code is responsible for converting ASCII characters to binary code
+        {
+            string iBinary = Convert.ToString(Convert.ToInt32(MESSAGE[i]), 2);// this is temporary variable for converting 1 character for 1 time
+            while (iBinary.Length < 7)//if character has less bits, than 7 - we add 0`s before it, to make it 7 bit code
+            {
+                iBinary = '0' + iBinary;
+            }
+            binary += iBinary;
+        }
+        int INDEX = 0;
+        //string chuckCode = "";
+
+        //Console.WriteLine(MESSAGE);
+        //Console.WriteLine(binary);
+        
+        while (INDEX < binary.Length)//This part of code make from binary code to unary
+        {
+            if (binary[INDEX] == '0')
+            {
+                Console.Write("00 0");
+                INDEX++;
+                while (INDEX < binary.Length && binary[INDEX] == '0')
+                {
+                    Console.Write("0");
+                    INDEX++;
+                }
+                if (INDEX >= binary.Length)
+                {
+                    break;
+                }
+                Console.Write(" ");
+            }
+            else if (binary[INDEX] == '1')
+            {
+                Console.Write("0 0");
+                INDEX++;
+                while (INDEX < binary.Length && binary[INDEX] == '1')
+                {
+                    Console.Write("0");
+                    INDEX++;
+                }
+                if (INDEX >= binary.Length)
+                {
+                    break;
+                }
+                Console.Write(" ");
+            }
+        }
+
+        
+    }
+}
